@@ -28,11 +28,12 @@ ggplot(housing.2001) +
 # Why would you want to log() one of the axis.  Look at the two different graphs to help you answer. 
 # To get a better view of the scatter, without the log, the plot is concentrated to only one side, which makes
 # it harder to read
+
 housing.2001$pred.SC <- predict(lm(Structure.Cost ~ log(Land.Value), data = housing.2001))
 
 # Pass the same graph into a value p1 
-p1 <- ggplot(housing.2001) +
-  geom_point(aes(y = Structure.Cost, x = log(Land.Value)))
+p1 <- ggplot(housing.2001, aes(y = Structure.Cost, x = log(Land.Value))) +
+  geom_point()
 p1
 
 # Now add coloring to the Home.Value and line that is the pred.SC colun in the data frame
