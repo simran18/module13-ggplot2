@@ -7,12 +7,12 @@ head(housing[1:5])
 library(ggplot2)
 
 # Create a Histogram of the Home.Value column with the housing data. 
-ggplot(housing) +
-  geom_histogram(aes(x = Home.Value))
+ggplot(data = housing) +
+  geom_point(aes(x = Date, y = Home.Value))
 
 # Create a plot that focus on MA and TX with the x-axis the Date and the y-axis Home.Value
 ggplot(subset(housing, State %in% c("TX", "MA")), 
-       aes(x = Date, y = Home.Value, color = State)) +
+       aes(x = Date, y = Home.Value, color = Date)) +
   geom_point()
 
 housing.2001 <- subset(housing, Date == 2001.25) 
@@ -46,5 +46,4 @@ p1 + geom_point(aes(color = Home.Value)) +
 
 # Finally in order to not just look at a bunch of points with no context we will add the different state names 
 # Make sure the label is the state and the size is 3 
-p1 + 
-  geom_text(aes(label=State), size = 3)
+p1 + geom_text(aes(label=State), size = 3)
